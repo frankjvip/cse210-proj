@@ -1,47 +1,62 @@
 using System;
 using System.Threading;
 
-abstract class Activity
+public class Activity
 {
-    protected string name;
-    protected string description;
-    protected int duration;
+    // Private member variables for encapsulation
+    private string _name;
+    private string _description;
+    private int _duration;
+
+    // Public properties for controlled access
+    public string Name { get { return _name; } }
+    public string Description { get { return _description; } }
+    public int Duration { get { return _duration; } }
 
     public Activity(string name, string description)
     {
-        this.name = name;
-        this.description = description;
+        _name = name;
+        _description = description;
     }
 
-    public void Start()
+    public void SetDuration(int duration)
     {
-        Console.WriteLine($"Starting {name}...");
-        Console.WriteLine(description);
-        Console.Write("Enter duration (seconds): ");
-        duration = int.Parse(Console.ReadLine());
+        _duration = duration;
+    }
+
+    public void StartActivity()
+    {
+        Console.WriteLine($"Starting {_name} Activity...");
+        Console.WriteLine(_description);
+        Console.WriteLine("Enter duration in seconds: ");
+        int duration = int.Parse(Console.ReadLine());
+        SetDuration(duration);
         Console.WriteLine("Prepare to begin...");
-        PauseWithAnimation(3);
-        Run();
-        End();
+        ShowSpinner(3);
     }
 
-    protected abstract void Run();
-
-    protected void End()
+    public void EndActivity()
     {
-        Console.WriteLine("Good job!");
-        Console.WriteLine($"You completed {name} for {duration} seconds.");
-        PauseWithAnimation(3);
+        Console.WriteLine($"Good job! You have completed {_duration} seconds of the {_name} Activity.");
+        ShowSpinner(3);
     }
 
-    protected void PauseWithAnimation(int seconds)
+    // Shared spinner animation method
+    public void ShowSpinner(int seconds)
     {
-        for (int i = seconds; i > 0; i--)
+        for (int i = 0; i < seconds * 5; i++)
         {
-            Console.Write($"{i} ");
-            Thread.Sleep(1000);
-            Console.Write("\b\b");
+            Console.Write("|");
+            Thread.Sleep(200);
+            Console.Write("\b/");
+            Thread.Sleep(200);
+            Console.Write("\b-");
+            Thread.Sleep(200);
+            Console.Write("\b\\");
+            Thread.Sleep(200);
+            Console.Write("\b");
         }
         Console.WriteLine();
     }
 }
+

@@ -1,19 +1,25 @@
 using System;
+using System.Threading;
 
-class BreathingActivity : Activity
+public class BreathingActivity : Activity
 {
-    public BreathingActivity() : base("Breathing Activity",
-        "This activity will help you relax by walking you through breathing in and out slowly.") { }
+    public BreathingActivity() 
+        : base("Breathing", "This activity will help you relax by guiding you to breathe in and out slowly.") { }
 
-    protected override void Run()
+    public void Run()
     {
-        DateTime endTime = DateTime.Now.AddSeconds(duration);
+        StartActivity();
+        DateTime endTime = DateTime.Now.AddSeconds(Duration);
+
         while (DateTime.Now < endTime)
         {
             Console.WriteLine("Breathe in...");
-            PauseWithAnimation(3);
+            ShowSpinner(2);
             Console.WriteLine("Breathe out...");
-            PauseWithAnimation(3);
+            ShowSpinner(2);
         }
+
+        EndActivity();
     }
 }
+
