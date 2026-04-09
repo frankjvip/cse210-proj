@@ -59,4 +59,3 @@ public class Activity
         Console.WriteLine();
     }
 }
-
