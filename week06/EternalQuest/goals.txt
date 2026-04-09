@@ -1,0 +1,3 @@
+0
+EternalGoal,memorize scriptures,Read to memorize scripture and references,50
+SimpleGoal,Lear Programing,Become better on Programing languages,100,False
