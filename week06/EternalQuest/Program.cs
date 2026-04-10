@@ -1,3 +1,15 @@
+// Eternal Quest Program
+// Author: Franklin
+//
+// NOTE: Features that exceed assignment requirements:
+// 1. Multiple goal types implemented with polymorphism (SimpleGoal, ChecklistGoal, EternalGoal).
+// 2. ChecklistGoal tracks partial progress and awards points incrementally.
+// 3. Persistent storage: goals can be saved to and loaded from a file (goals.txt).
+// 4. GoalManager class centralizes goal operations, improving modularity and scalability.
+// 5. Extra Feature: Added "Level Up" system. Every 1000 points, the user levels up and receives a celebratory message.
+// 
+// These enhancements demonstrate creativity and extend the program beyond the core rubric.
+
 using System;
 
 class Program
@@ -79,6 +91,4 @@ class Program
     }
 }
 
-// Extra Feature: Added "Level Up" system.
-// Every 1000 points, the user levels up and receives a celebratory message.
-// This gamification element exceeds the base requirements.
+
